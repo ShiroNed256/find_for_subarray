@@ -3,17 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      
-    </>
-  )
-}
 
 
+let sizeSubmatrix = 2
 function findSubmatrix(matrix, submatrix) 
 {
     const results = []
@@ -22,21 +14,46 @@ function findSubmatrix(matrix, submatrix)
     
     for (let y = 0; y <= rows - 2; y++){
       for (let x = 0; x <= cols - 2; x++){
-        if (checkSubmatrix(matrix, submatrix, i, j)) {
-                return {row: i, col: j}; // Возвращаем координаты левого верхнего угла
+        if (checkSubmatrix(matrix, submatrix, y, x)) {
+                results.push(getPointsMatrix(y, x)) // Возвращаем координаты левого верхнего угла
             }
       }
     }
 }
 
 function checkSubmatrix(matrix, submatrix, startRow, startCol) {
-    for (let i = 0; i < submatrix.length; i++) {
-        for (let j = 0; j < submatrix[i].length; j++) {
-            if (matrix[startRow + i][startCol + j] !== submatrix[i][j]) {
-                return false;
-            }
-        }
+  for (let i = 0; i < submatrix.length; i++) {
+      for (let j = 0; j < submatrix[i].length; j++) {
+          if (matrix[startRow + i][startCol + j] !== submatrix[i][j]) {
+              return false;
+          }
+      }
     }
-    return tru
+  return true
+}
+
+
+function getPointsMatrix(y, x){
+  let distanceBetweenPoints = sizeSubmatrix - 1
+  this.topLeftIndex = getPoint(x, y)
+  this.topRightIndex = getPoint(x+distanceBetweenPoints, y)
+  this.bottomLeftIndex = getPoint(x, y + distanceBetweenPoints)
+  this.bottomRightIndex = getPoint(x + distanceBetweenPoints, y + distanceBetweenPoints)
+}
+
+function getPoint(x, y){
+  this.x = x
+  this.y = y
+}
+
+
+function App() {
+  const [count,  setCount] = useState(0)
+
+  return (
+    <>
+    </>
+  )
+}
 
 export default App
