@@ -5,13 +5,14 @@ function findSubmatrix(matrix, submatrix)
     const rows = matrix.length;
     const cols = matrix[0].length;
     
-    for (let y = 0; y <= rows - 2; y++){
-      for (let x = 0; x <= cols - 2; x++){
+    for (let y = 0; y <= rows - sizeSubmatrix; y++){
+      for (let x = 0; x <= cols - sizeSubmatrix; x++){
         if (checkSubmatrix(matrix, submatrix, y, x)) {
-                results.push(getPointsMatrix(y, x)) // Возвращаем координаты левого верхнего угла
+                results.push(new PointsMatrix(y, x)) // Возвращаем координаты левого верхнего угла
             }
       }
     }
+    return results
 }
 
 function checkSubmatrix(matrix, submatrix, startRow, startCol) {
@@ -26,15 +27,15 @@ function checkSubmatrix(matrix, submatrix, startRow, startCol) {
 }
 
 
-function getPointsMatrix(y, x){
+function PointsMatrix(y, x){
   let distanceBetweenPoints = sizeSubmatrix - 1
-  this.topLeftIndex = getPoint(x, y)
-  this.topRightIndex = getPoint(x+distanceBetweenPoints, y)
-  this.bottomLeftIndex = getPoint(x, y + distanceBetweenPoints)
-  this.bottomRightIndex = getPoint(x + distanceBetweenPoints, y + distanceBetweenPoints)
+  this.topLeftIndex =new Point(x, y)
+  this.topRightIndex = new Point(x+distanceBetweenPoints, y)
+  this.bottomLeftIndex = new Point(x, y + distanceBetweenPoints)
+  this.bottomRightIndex = new Point(x + distanceBetweenPoints, y + distanceBetweenPoints)  
 }
 
-function getPoint(x, y){
+function Point(x, y){
   this.x = x
-  this.y = y
+  this.y = y  
 }
