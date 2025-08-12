@@ -1,16 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-
-
-
-
-
-
-
-
 let sizeSubmatrix = 2
 function findSubmatrix(matrix, submatrix) 
 {
@@ -51,37 +38,3 @@ function getPoint(x, y){
   this.x = x
   this.y = y
 }
-
-
-function App() {
-  const [count,  setCount] = useState(0)
-
-  return (
-    <div style={{padding: 20}}>
-      <h1>Поиск подматрицы</h1>
-
-      <h2>Ввод матрицы</h2>
-    
-      <div class="controls">
-        <label>
-            Строки: <input type="number" id="rows" min="1" max="10" value="3"/>
-        </label>
-        <label>
-            Столбцы: <input type="number" id="cols" min="1" max="10" value="3"/>
-        </label>
-        <button onclick="createMatrix()">Создать матрицу</button>
-        <button onclick="fillRandom()">Заполнить случайно</button>
-        <button onclick="calculate()">Вычислить</button>
-        <button onclick="clearMatrix()">Очистить</button>
-      </div>
-
-      <div class="matrix-container">
-        <div id="matrix" class="matrix-input"></div>
-      </div>
-      
-      <div id="result"></div>
-    </div>
-  )
-}
-
-export default App
