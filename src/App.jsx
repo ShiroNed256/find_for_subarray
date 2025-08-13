@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+//import './App.css'
+
+import MatrixInput from './components/MatrixInput'
+import ListRender from './components/ListRender'
 
 
 
@@ -11,75 +14,77 @@ import './App.css'
 
 
 
-let sizeSubmatrix = 2
-function findSubmatrix(matrix, submatrix) 
-{
+
+function App() {
+
+  const [matrix1, setMatrix] = useState([[]])
+  const [subMatrix, setSubMatrix] = useState([[]])
+  const [result, setResult] = useState([])
+
+  const handleMatrixChange = (newMatrix) => {
+    setMatrix(newMatrix)
+    console.log(newMatrix)
+  }
+
+  const handleSubMatrixChange = (newMatrix) => {
+    setSubMatrix(newMatrix)
+  }
+
+  function find() {
+    setResult(findSubmatrix(matrix1, subMatrix))
+  
+  }
+
+
+  let sizeSubmatrix = 2
+  function findSubmatrix(matrix, submatrix){
     const results = []
     const rows = matrix.length;
     const cols = matrix[0].length;
     
-    for (let y = 0; y <= rows - 2; y++){
-      for (let x = 0; x <= cols - 2; x++){
+    
+
+    for (let y = 0; y <= rows - sizeSubmatrix; y++){
+      for (let x = 0; x <= cols - sizeSubmatrix; x++){
         if (checkSubmatrix(matrix, submatrix, y, x)) {
-                results.push(getPointsMatrix(y, x)) // Возвращаем координаты левого верхнего угла
+                results.push(new PointsMatrix(y, x)) // Возвращаем координаты левого верхнего угла
             }
       }
     }
-}
+    return results
+  }
 
-function checkSubmatrix(matrix, submatrix, startRow, startCol) {
-  for (let i = 0; i < submatrix.length; i++) {
-      for (let j = 0; j < submatrix[i].length; j++) {
-          if (matrix[startRow + i][startCol + j] !== submatrix[i][j]) {
-              return false;
-          }
+  function checkSubmatrix(matrix, submatrix, startRow, startCol) {
+    for (let i = 0; i < submatrix.length; i++) {
+        for (let j = 0; j < submatrix[i].length; j++) {
+            if (matrix[startRow + i][startCol + j] !== submatrix[i][j]) {
+                return false;
+            }
+        }
       }
-    }
-  return true
-}
+    return true
+  }
 
 
-function getPointsMatrix(y, x){
-  let distanceBetweenPoints = sizeSubmatrix - 1
-  this.topLeftIndex = getPoint(x, y)
-  this.topRightIndex = getPoint(x+distanceBetweenPoints, y)
-  this.bottomLeftIndex = getPoint(x, y + distanceBetweenPoints)
-  this.bottomRightIndex = getPoint(x + distanceBetweenPoints, y + distanceBetweenPoints)
-}
+  function PointsMatrix(y, x){
+    let distanceBetweenPoints = sizeSubmatrix - 1
+    this.topLeftIndex =new Point(x, y)
+    this.topRightIndex = new Point(x+distanceBetweenPoints, y)
+    this.bottomLeftIndex = new Point(x, y + distanceBetweenPoints)
+    this.bottomRightIndex = new Point(x + distanceBetweenPoints, y + distanceBetweenPoints)  
+  }
 
-function getPoint(x, y){
-  this.x = x
-  this.y = y
-}
-
-
-function App() {
-  const [count,  setCount] = useState(0)
+  function Point(x, y){
+    this.x = x
+    this.y = y  
+  }
 
   return (
-    <div style={{padding: 20}}>
-      <h1>Поиск подматрицы</h1>
-
-      <h2>Ввод матрицы</h2>
-    
-      <div class="controls">
-        <label>
-            Строки: <input type="number" id="rows" min="1" max="10" value="3"/>
-        </label>
-        <label>
-            Столбцы: <input type="number" id="cols" min="1" max="10" value="3"/>
-        </label>
-        <button onclick="createMatrix()">Создать матрицу</button>
-        <button onclick="fillRandom()">Заполнить случайно</button>
-        <button onclick="calculate()">Вычислить</button>
-        <button onclick="clearMatrix()">Очистить</button>
-      </div>
-
-      <div class="matrix-container">
-        <div id="matrix" class="matrix-input"></div>
-      </div>
-      
-      <div id="result"></div>
+    <div className="App">
+      <MatrixInput  onMatrixChange={handleMatrixChange} title = 'Матрица' />
+      <MatrixInput  onMatrixChange={handleSubMatrixChange} title = 'Подматрица' />
+      <button onClick={find}>Найти</button>
+      <ListRender items={result} />      
     </div>
   )
 }

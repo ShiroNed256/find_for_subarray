@@ -1,3 +1,5 @@
+import React from 'react';
+
 let sizeSubmatrix = 2
 function findSubmatrix(matrix, submatrix) 
 {
@@ -27,15 +29,6 @@ function checkSubmatrix(matrix, submatrix, startRow, startCol) {
 }
 
 
-function PointsMatrix(y, x){
-  let distanceBetweenPoints = sizeSubmatrix - 1
-  this.topLeftIndex =new Point(x, y)
-  this.topRightIndex = new Point(x+distanceBetweenPoints, y)
-  this.bottomLeftIndex = new Point(x, y + distanceBetweenPoints)
-  this.bottomRightIndex = new Point(x + distanceBetweenPoints, y + distanceBetweenPoints)  
-}
 
-function Point(x, y){
-  this.x = x
-  this.y = y  
-}
+
+export default findSubmatrix
