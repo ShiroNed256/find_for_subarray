@@ -5,7 +5,7 @@ const ListRender = ({ items }) => {
 
     return (
     <div>
-        <h2>Список элементов:</h2>
+        <h2 style={{textAlign: "center"}}>Список элементов</h2>
         <ul style={{
           listStyle: "none",
           padding: 0,
@@ -29,13 +29,12 @@ const ListRender = ({ items }) => {
           >
             {Object.entries(item).map(([key, value]) => (
               <div key={key} style={{ marginBottom: "8px" }}>
-                <h3 style={{ margin: "4px 0" }}>{key}</h3>
-                {Object.entries(value).map(([subKey, subValue]) => (
-                    <div key={subKey}>
-                      {subKey}: {subValue}
-                    </div>
-                ))
-                }
+                <div>
+                      <strong>{key}:</strong>{" "}
+                      {`{`+Object.entries(value)
+                        .map(([subKey, subValue]) => `${subKey}: ${subValue}`)
+                        .join(", ")+`}`}
+                </div>
               </div>
             ))}
           </li>
