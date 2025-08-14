@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-//import './App.css'
+
+
 
 import MatrixInput from './components/MatrixInput'
 import ListRender from './components/ListRender'

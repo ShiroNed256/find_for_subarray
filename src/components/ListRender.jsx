@@ -23,7 +23,7 @@ const ListRender = ({ items }) => {
               padding: "10px",
               marginBottom: "10px",
               background: "#4B0082",
-              maxWidth: "300px", // ограничиваем ширину
+              maxWidth: "300px",
               width: "100%"
             }}
           >
@@ -44,7 +44,5 @@ const ListRender = ({ items }) => {
     )
 }
 
-// Пример использования:
-// <ListRenderer items={['Яблоко', 'Банан', 'Апельсин']} />
 
 export default ListRender
