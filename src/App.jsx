@@ -36,11 +36,12 @@ function App() {
   }
 
 
-  let sizeSubmatrix = 2
+  
   function findSubmatrix(matrix, submatrix){
     const results = []
     const rows = matrix.length;
     const cols = matrix[0].length;
+    const sizeSubmatrix = subMatrix.length
     
     
 
@@ -67,7 +68,8 @@ function App() {
 
 
   function PointsMatrix(y, x){
-    let distanceBetweenPoints = sizeSubmatrix - 1
+    let distanceBetweenPoints = subMatrix.length - 1
+    this.id
     this.topLeftIndex =new Point(x, y)
     this.topRightIndex = new Point(x+distanceBetweenPoints, y)
     this.bottomLeftIndex = new Point(x, y + distanceBetweenPoints)
