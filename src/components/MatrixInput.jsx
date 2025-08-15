@@ -10,10 +10,6 @@ const MatrixInput = (props) => {
     initializeMatrix()
   }, [rows, cols])
 
-  const sendMatrixToParent = () => {
-    props.onMatrixChange(matrix)
-  }
-
   const initializeMatrix = () => {
     const newMatrix = []
     for (let i = 0; i < rows; i++) {
@@ -23,27 +19,36 @@ const MatrixInput = (props) => {
       }
     }
     setMatrix(newMatrix)
-    props
   }
 
   const handleCellChange = (row, col, value) => {
     const newMatrix = [...matrix]
-    newMatrix[row][col] = Number(value) || 0
-    setMatrix(newMatrix)
+    if (value.length > 1) {
+      value = value.slice(-1)
+    }
+    if (/^[0-9A-F]*$/.test(value)) {
+      newMatrix[row][col] = value || 0
+      setMatrix(newMatrix)
+    }
+    
   }
 
   const fillRandom = () => {
+
     const newMatrix = matrix.map(row => 
-      row.map(() => Math.floor(Math.random() * 20 - 10))
+      row.map(() => Math.floor(Math.random() * 16).toString(16).toUpperCase())
     )
     setMatrix(newMatrix)
+    props.onMatrixChange(matrix)
   }
 
   const clearMatrix = () => {
     const newMatrix = matrix.map(row => row.map(() => 0))
     setMatrix(newMatrix)
+    props.onMatrixChange(matrix)
   }
 
+  
   
 
   return (
@@ -75,10 +80,10 @@ const MatrixInput = (props) => {
           />
         </label>
         <button 
-          onClick={sendMatrixToParent}
+          onClick={fillRandom}
           style={{ padding: '8px 16px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
         >
-          Сохранить матрицу
+          Сгенирировать
         </button>
         
         <button 
@@ -100,7 +105,7 @@ const MatrixInput = (props) => {
             row.map((cell, colIndex) => (
               <input
                 key={`${rowIndex}-${colIndex}`}
-                type="number"
+                type="text"
                 value={cell}
                 onChange={(e) => handleCellChange(rowIndex, colIndex, e.target.value)}
                 style={{

@@ -30,10 +30,7 @@ const ListRender = ({ items }) => {
             {Object.entries(item).map(([key, value]) => (
               <div key={key} style={{ marginBottom: "8px" }}>
                 <div>
-                      <strong>{key}:</strong>{" "}
-                      {`{`+Object.entries(value)
-                        .map(([subKey, subValue]) => `${subKey}: ${subValue}`)
-                        .join(", ")+`}`}
+                      <strong>{key}: </strong>{value}                      
                 </div>
               </div>
             ))}

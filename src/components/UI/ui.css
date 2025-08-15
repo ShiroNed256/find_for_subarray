@@ -1,0 +1,49 @@
+.cell {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.highlight {
+    background-color: #ff2d2d;
+}
+
+.settingBlock {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.matrix {
+    display: grid;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.parametrInput {
+    margin-left: 5px;
+}
+
+.button {
+    padding: 8px 16px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-green {
+    background-color: #4CAF50;
+}
+
+.button-red {
+    background-color: #f44336;
+}
+
+.button-blue {
+    background-color: #4c5eaf;
+}

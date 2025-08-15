@@ -1,91 +1,22 @@
 import { useState } from 'react'
-
-
-
-import MatrixInput from './components/MatrixInput'
-import ListRender from './components/ListRender'
-
-
-
-
-
-
-
-
-
+import MatrixRender from './components/MatrixRender'
 
 function App() {
 
-  const [matrix1, setMatrix] = useState([[]])
-  const [subMatrix, setSubMatrix] = useState([[]])
+  const [matrix, setMatrix] = useState([[]])
   const [result, setResult] = useState([])
 
   const handleMatrixChange = (newMatrix) => {
     setMatrix(newMatrix)
-    console.log(newMatrix)
   }
 
-  const handleSubMatrixChange = (newMatrix) => {
-    setSubMatrix(newMatrix)
-  }
-
-  function find() {
-    setResult(findSubmatrix(matrix1, subMatrix))
-  
-  }
-
-
-  
-  function findSubmatrix(matrix, submatrix){
-    const results = []
-    const rows = matrix.length;
-    const cols = matrix[0].length;
-    const sizeSubmatrix = subMatrix.length
-    
-    
-
-    for (let y = 0; y <= rows - sizeSubmatrix; y++){
-      for (let x = 0; x <= cols - sizeSubmatrix; x++){
-        if (checkSubmatrix(matrix, submatrix, y, x)) {
-                results.push(new PointsMatrix(y, x)) // Возвращаем координаты левого верхнего угла
-            }
-      }
-    }
-    return results
-  }
-
-  function checkSubmatrix(matrix, submatrix, startRow, startCol) {
-    for (let i = 0; i < submatrix.length; i++) {
-        for (let j = 0; j < submatrix[i].length; j++) {
-            if (matrix[startRow + i][startCol + j] !== submatrix[i][j]) {
-                return false;
-            }
-        }
-      }
-    return true
-  }
-
-
-  function PointsMatrix(y, x){
-    let distanceBetweenPoints = subMatrix.length - 1
-    this.id
-    this.topLeftIndex =new Point(x, y)
-    this.topRightIndex = new Point(x+distanceBetweenPoints, y)
-    this.bottomLeftIndex = new Point(x, y + distanceBetweenPoints)
-    this.bottomRightIndex = new Point(x + distanceBetweenPoints, y + distanceBetweenPoints)  
-  }
-
-  function Point(x, y){
-    this.x = x
-    this.y = y  
+  const handleSubMatrixChange = (newResult) => {
+    setResult(newResult)
   }
 
   return (
     <div className="App">
-      <MatrixInput  onMatrixChange={handleMatrixChange} title = 'Матрица' />
-      <MatrixInput  onMatrixChange={handleSubMatrixChange} title = 'Подматрица' />
-      <button onClick={find}>Найти</button>
-      <ListRender items={result} />      
+        <MatrixRender matrix = {matrix} result = {result} />
     </div>
   )
 }
