@@ -1,11 +1,11 @@
 .cell {
     
-    width: 50px;
-    height: 50px;
+    padding: 10px;
     text-align: center;
     font-size: 100%;
     border: 1px solid #ccc;
     border-radius: 10px;
+    margin: 3px;
 }
 
 .highlight {
@@ -20,10 +20,13 @@
 }
 
 .matrix {
+    width: 200px;
+    height: 200px;
     display: grid;
-    row-gap: 12px;
-    column-gap: 12px;
-    margin: 6px;
+    grid-auto-rows: 50px;
+    grid-gap: 5px;
+    margin: 5px;    
+    justify-content: start;
 }
 
 .parametrInput {
@@ -51,24 +54,25 @@
 }
 
 .border-top {
-    border-top: 2px solid red
+    border-top: 1px solid red
 }
 
 .border-bottom {
-    border-bottom: 2px solid red
+    border-bottom: 1px solid red
 }
 
 .border-left {
-    border-left: 2px solid red
+    border-left: 1px solid red
 }
 
 .border-right {
-    border-right: 2px solid red
+    border-right: 1px solid red
 }
 
 .matrix-container {
   position: relative;
   display: inline-block;
+  overflow: auto;
 }
 
 .highlight2 {

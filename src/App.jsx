@@ -4,13 +4,19 @@ import MatrixRender from './components/MatrixRender'
 
 function App() {
 
-  const [matrix, setMatrix] = useState([[1, 3, 2], [2, 0, 0], [0, 0, 0]])
+  const [matrix, setMatrix] = useState([[1, 3, 2], [2, 0, 0], [0, 0, 0], [1, 3, 2], [2, 0, 0], [0, 0, 0], [1, 3, 2], [2, 0, 0], [0, 0, 0], [1, 3, 2], [2, 0, 0], [0, 0, 0]])
   const [result, setResult] = useState([
     {
-        leftBound: 1,
-        rightBound: 1,
-        topBound: 1,
-        bottomBound:1, 
+      leftBound: 0,
+      rightBound: 1,
+      topBound: 0,
+      bottomBound:7, 
+    },
+    {
+      leftBound: 0,
+      rightBound: 0,
+      topBound: 0,
+      bottomBound:0, 
     }
   ])
 
