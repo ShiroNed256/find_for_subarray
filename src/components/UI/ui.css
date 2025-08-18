@@ -12,9 +12,9 @@
     background-color: #ff2d2d;
 }
 
-.settingBlock {
-    max-width: 800px;
-    margin: 0 auto;
+.setting-block {
+    max-width: 400px;
+    margin: 5px 20px;
     padding: 20px;
     font-family: Arial, sans-serif;
 }
@@ -73,6 +73,7 @@
   position: relative;
   display: inline-block;
   overflow: auto;
+  border: 2px solid  #5a5555;
 }
 
 .highlight2 {

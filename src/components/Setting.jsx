@@ -1,38 +1,30 @@
+import React, { useState } from 'react'
 import ParametrBlock from './ParametrBlock'
-import './UI'
+import './UI/ui.css'
 
-const Setting = () => {
+const Setting = (props) => {
     const [rows, setRows] = useState(3)
     const [cols, setCols] = useState(3)
-    const [matrix, setMatrix] = useState([])
 
-    const initializeMatrix = () => {
+    const fillRandom = () => {
         const newMatrix = []
         for (let i = 0; i < rows; i++) {
             newMatrix[i] = []
             for (let j = 0; j < cols; j++) {
-                newMatrix[i][j] = 0
+                newMatrix[i][j] = Math.floor(Math.random() * 16)
+                .toString(16)
+                .toUpperCase()
             }
         }
-        setMatrix(newMatrix)
-    }
-
-    const fillRandom = () => {
-        const newMatrix = matrix.map(row => 
-            row.map(() => 
-                Math.floor(Math.random() * 16)
-                .toString(16)
-                .toUpperCase())
-        )
-        setMatrix(newMatrix)
+        props.matrixChange(newMatrix)
     }
 
     const clearMatrix = () => {
-        const newMatrix = matrix.map(row => row.map(() => 0))
-        setMatrix(newMatrix)
+        props.matrixChange([])
     }
 
     const changeRowMatrix = (numberRows) => {
+        console.log(numberRows)
         setRows(numberRows)
     }
 
@@ -42,21 +34,21 @@ const Setting = () => {
 
 
     return (
-        <div className="settingBlock">
-            <h3>Настроки матрицы</h3>
+        <div className="setting-block">
+            <h3>Настройки матрицы</h3>
             <div style={{ margin: '20px 0', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                <ParametrBlock parametrName = 'Строки' parametrChange = {changeRowMatrix} />
-                <ParametrBlock parametrName = 'Столбцы' parametrChange = {changeColMatrix} />
+                <ParametrBlock parametrName = 'Строки' parametrChange = {changeRowMatrix} parametrKey = {1} />
+                <ParametrBlock parametrName = 'Столбцы' parametrChange = {changeColMatrix} parametrKey = {2} />
+                <br />
                 <button className='button button-green' onClick={fillRandom}>
                     Сгенирировать
-                </button>                
+                </button>
                 <button className='button button-red' onClick={clearMatrix}>
                     Очистить
                 </button>
             </div>
-            <h3>Настроки маски</h3>
-            
-      
+            <h3>Настройки маски</h3>
+
         </div>
     )
 }

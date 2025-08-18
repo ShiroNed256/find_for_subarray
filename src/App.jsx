@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import MatrixRender from './components/MatrixRender'
+import Setting from './components/Setting'
+import './App.css'
 
 
 function App() {
 
-  const [matrix, setMatrix] = useState([[1, 3, 2], [2, 0, 0], [0, 0, 0], [1, 3, 2], [2, 0, 0], [0, 0, 0], [1, 3, 2], [2, 0, 0], [0, 0, 0], [1, 3, 2], [2, 0, 0], [0, 0, 0]])
+  const [matrix, setMatrix] = useState([[]])
   const [result, setResult] = useState([
     {
       leftBound: 0,
@@ -30,7 +32,8 @@ function App() {
 
   return (
     <div className="App">
-        <MatrixRender matrix = {matrix} result = {result} />
+      <MatrixRender matrix = {matrix} result = {result} />
+      <Setting matrixChange = {handleMatrixChange} />
     </div>
   )
 }

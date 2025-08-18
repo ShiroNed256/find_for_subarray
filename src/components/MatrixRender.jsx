@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import './UI/ui.css'
 
 const MatrixRender = (props) => {
@@ -78,11 +77,7 @@ const MatrixRender = (props) => {
         {props.matrix.map((row, rowIndex) => (
           row.map((cell, colIndex) => (
             <input 
-              className={`cell ${isInSubmatrix(rowIndex, colIndex) ? "highlight" : ""}
-                ${isTop(rowIndex, colIndex) ? "border-top" : ""}
-                ${isBottom(rowIndex, colIndex) ? "border-bottom" : ""}
-                ${isLeft(rowIndex, colIndex) ? "border-left" : ""}
-                ${isRight(rowIndex, colIndex) ? "border-right" : ""}`}
+              className='cell'
               key={`${rowIndex}-${colIndex}`}
               type="text"
               value={cell}
@@ -92,7 +87,7 @@ const MatrixRender = (props) => {
         ))}
       </div>
       {props.result.map((bounds, indexBound) => (
-        <div className="highlight2" style={highlightStyle(bounds)}></div>
+        <div className="highlight2" style={highlightStyle(bounds)} key={indexBound}></div>
         ))
       }
     </div>

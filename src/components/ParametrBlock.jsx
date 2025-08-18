@@ -1,6 +1,6 @@
 const ParametrBlock = (props) => {
     return (
-        <label>
+        <div>
           {props.parametrName}: 
           <input 
             className="parametrInput"
@@ -10,7 +10,7 @@ const ParametrBlock = (props) => {
             onChange={(e) => props.parametrChange(Number(e.target.value))              
             }
           />
-        </label>        
+        </div>        
     )
 }
 
