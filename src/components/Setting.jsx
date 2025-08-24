@@ -1,30 +1,23 @@
 import React, { useState } from 'react'
 import ParametrBlock from './ParametrBlock'
 import './ui/style.css'
+import {mainStore} from '../store/mainStore'
+import { observer } from 'mobx-react-lite'
 
-const Setting = (props) => {
+const Setting = observer((props) => {
     const [rows, setRows] = useState(3)
     const [cols, setCols] = useState(3)
 
     const fillRandom = () => {
-        const newMatrix = []
-        for (let i = 0; i < rows; i++) {
-            newMatrix[i] = []
-            for (let j = 0; j < cols; j++) {
-                newMatrix[i][j] = Math.floor(Math.random() * 16)
-                .toString(16)
-                .toUpperCase()
-            }
-        }
-        props.matrixChange(newMatrix)
+        mainStore.initMatrix(rows, cols)
+        mainStore.Matrix.fillRandom()
     }
 
     const clearMatrix = () => {
-        props.matrixChange([])
+        mainStore.initMatrix(rows, cols)
     }
 
     const changeRowMatrix = (numberRows) => {
-        console.log(numberRows)
         setRows(numberRows)
     }
 
@@ -51,6 +44,6 @@ const Setting = (props) => {
 
         </div>
     )
-}
+})
 
 export default Setting

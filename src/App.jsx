@@ -29,7 +29,7 @@ function App() {
   const handleSubMatrixChange = (newResult) => {
     setResult(newResult)
   }
-
+  
   return (
     <div className="App">
       <ResultRender matrix = {matrix} result = {result} />

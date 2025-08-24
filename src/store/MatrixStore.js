@@ -1,6 +1,6 @@
 import {makeAutoObservable} from 'mobx'
 
-class MatrixStore {
+export default class MatrixStore {
     matrix = []
     
     constructor(rows = 3, cols = 3) {
@@ -16,9 +16,9 @@ class MatrixStore {
     
     fillRandom() {
         this.matrix = this.matrix.map(row =>
-            row.map(() => Math.floor(Math.random() * 10))
+            row.map(() => Math.floor(Math.random() * 16)
+                .toString(16)
+                .toUpperCase())
         )
   }
 }
-
-const MatrixStore = new MatrixStore
