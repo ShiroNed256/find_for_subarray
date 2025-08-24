@@ -1,4 +1,4 @@
-import './UI/ui.css'
+import './ui/style.css'
 
 const ResultRender = (props) => {
   const handleCellChange = (row, col, value) => {
@@ -30,9 +30,9 @@ const ResultRender = (props) => {
   return (
     <div className="matrix-container" style={{ margin: '20px 0' }}>
       <div className='matrix' style={{
-            gridTemplateColumns: `repeat(${props.matrix[0].length}, 50px)`, 
+            gridTemplateColumns: `repeat(${props.matrix[0].lenght}, 50px)`,
             gridTemplateRows: `repeat(${props.matrix.lenght}, 50px)`
-              }}>
+          }}>
         {props.matrix.map((row, rowIndex) => (
           row.map((cell, colIndex) => (
             <input 
@@ -53,4 +53,4 @@ const ResultRender = (props) => {
   )
 }
 
-export default MatrixRender
+export default ResultRender

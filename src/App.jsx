@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import MatrixRender from './components/MatrixRender'
+import ResultRender from './components/ResultRender'
 import Setting from './components/Setting'
 import './App.css'
 
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="App">
-      <MatrixRender matrix = {matrix} result = {result} />
+      <ResultRender matrix = {matrix} result = {result} />
       <Setting matrixChange = {handleMatrixChange} />
     </div>
   )

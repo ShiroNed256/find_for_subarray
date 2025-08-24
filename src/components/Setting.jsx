@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ParametrBlock from './ParametrBlock'
-import './UI/ui.css'
+import './ui/style.css'
 
 const Setting = (props) => {
     const [rows, setRows] = useState(3)
