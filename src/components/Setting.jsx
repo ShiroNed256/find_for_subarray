@@ -40,8 +40,6 @@ const Setting = observer((props) => {
                     Очистить
                 </button>
             </div>
-            <h3>Настройки маски</h3>
-
         </div>
     )
 })
