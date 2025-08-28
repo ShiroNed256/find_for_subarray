@@ -3,6 +3,7 @@ import ParametrBlock from './ParametrBlock'
 import './ui/style.css'
 import {mainStore} from '../store/mainStore'
 import { observer } from 'mobx-react-lite'
+import SearchRender from './SearchRender'
 
 const Setting = observer((props) => {
     const [rows, setRows] = useState(3)
@@ -29,10 +30,9 @@ const Setting = observer((props) => {
     return (
         <div className="setting-block">
             <h3>Настройки матрицы</h3>
-            <div style={{ margin: '20px 0', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                <ParametrBlock parametrName = 'Строки' parametrChange = {changeRowMatrix} parametrKey = {1} />
-                <ParametrBlock parametrName = 'Столбцы' parametrChange = {changeColMatrix} parametrKey = {2} />
-                <br />
+            <div style={{ margin: '20px 0', display: 'flex', gap: '10px', flexWrap: 'nowrap', alignItems: 'center' }}>
+                <ParametrBlock parametrName = 'Строки' parametrChange = {changeRowMatrix}  />
+                <ParametrBlock parametrName = 'Столбцы' parametrChange = {changeColMatrix} />
                 <button className='button button-green' onClick={fillRandom}>
                     Сгенирировать
                 </button>
@@ -40,6 +40,7 @@ const Setting = observer((props) => {
                     Очистить
                 </button>
             </div>
+            <SearchRender />
         </div>
     )
 })

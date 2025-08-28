@@ -30,11 +30,11 @@ const SearchRender = observer(() => {
   }
  
   return (
-    <div className="setting-block" style={{ display: "grid", justifyContent: "start"}} >
+    <div >
       <h3>Настройки маски</h3>
-      <div style={{ margin: '20px 0', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-          <ParametrBlock parametrName = 'Строки' parametrChange = {changeRowMatrix} parametrKey = {1} />
-          <ParametrBlock parametrName = 'Столбцы' parametrChange = {changeColMatrix} parametrKey = {2} />
+      <div style={{ margin: '20px 0', display: 'flex', gap: '10px', flexWrap: 'nowrap' }}>
+          <ParametrBlock parametrName = 'Строки' parametrChange = {changeRowMatrix} />
+          <ParametrBlock parametrName = 'Столбцы' parametrChange = {changeColMatrix} />
           <br />
           <button className='button button-green' onClick={fillRandom}>
               Создать

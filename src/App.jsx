@@ -11,7 +11,6 @@ const App = observer(() => {
     <div className="App">
       <ResultRender result = {mainStore.Result} />
       <Setting/>
-      <SearchRender />
 
     </div>
   )
